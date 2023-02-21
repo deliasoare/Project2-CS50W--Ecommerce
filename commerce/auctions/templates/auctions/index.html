@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+    <div style="padding:20px 20px;">
+    {% for listing in listings %}
+        {% if listing.closed == False %}
+            <a href="{% url 'listing' listing=listing %}" style="display:block; text-decoration:none; border-style:ridge; border-color: #D3D3D3; border-width:1px; padding:20px 20px; height:200px; margin-bottom:30px;">
+                <img style="height:150px; margin-bottom:-150px;" src="{{listing.image}}">
+                <div style="text-align:center; ">
+                    <p style="color:black">{{listing.title}}</p>
+                    <br>
+                    {% if listing.bid %}
+                        <p style="color:black"><b>Price:</b>${{listing.bid}}</p>
+                    {% else %}
+                        <p style="color:black"><b>Price:</b>${{listing.StartingBid}}</p>
+                    {% endif %}
+                    <p style="color:gray">Created by {{listing.creator}} at {{listing.date}}</p>
+                </div>
+            </a>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}

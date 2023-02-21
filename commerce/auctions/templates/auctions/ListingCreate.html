@@ -1,0 +1,18 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+{% load crispy_forms_tags %}
+{% if exists %}
+    <div class="alert alert-danger"> This title already exists - Pick a different one! </div>
+{% endif %}
+<h1>Listing details</h1>
+<br>
+<div>
+    <form action = "{% url 'createListing' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <input type="submit">
+    </form>
+</div>
+{% endblock %}

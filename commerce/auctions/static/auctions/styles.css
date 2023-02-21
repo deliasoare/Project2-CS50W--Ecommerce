@@ -1,0 +1,8 @@
+body {
+    padding: 10px;
+}
+.one {
+    border-style: ridge;
+    border-color: #D3D3D3 ;
+    border-width:1px;
+}
